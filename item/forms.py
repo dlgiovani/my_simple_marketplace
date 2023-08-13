@@ -3,10 +3,11 @@ from .models import Item
 
 INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'
 
+
 class NewItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('category', 'name', 'description', 'price', 'image',)
+        fields = ('category', 'name', 'description', 'price', 'image_url',)
 
         widgets = {
             'category': forms.Select(attrs={
@@ -21,15 +22,17 @@ class NewItemForm(forms.ModelForm):
             'price': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
             }),
-            'image': forms.FileInput(attrs={
+            'image_url': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
-            })
+            }),
         }
+
 
 class EditItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('category', 'name', 'description', 'price', 'image', 'is_sold')
+        fields = ('category', 'name', 'description',
+                  'price', 'image_url', 'is_sold')
 
         widgets = {
             'category': forms.Select(attrs={
@@ -44,7 +47,7 @@ class EditItemForm(forms.ModelForm):
             'price': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
             }),
-            'image': forms.FileInput(attrs={
+            'image_url': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
             }),
         }

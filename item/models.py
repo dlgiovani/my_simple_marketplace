@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -16,7 +15,7 @@ class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='item_images', blank=False, null=False)
+    image_url = models.URLField(blank=True, null=True)
 
     price = models.FloatField()
     is_sold = models.BooleanField(default=False)
