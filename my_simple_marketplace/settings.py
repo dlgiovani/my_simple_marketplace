@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', config('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['my-simple-marketplace-de99bbb33188.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', config('SECRET_KEY'))]
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
