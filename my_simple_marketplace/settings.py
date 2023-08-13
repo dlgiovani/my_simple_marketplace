@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'my_simple_marketplace.wsgi.application'
 #     }
 # }
 
-# DATABASE_URL    = os.environ.get('DATABASE_URL', config('DATABASE_URL'))
-# DATABASE        = os.environ.get('DATABASE', config('DATABASE'))
-# DATABASE_USER   = os.environ.get('DATABASE_USER', config('DATABASE_USER'))
-# DATABASE_SECRET = os.environ.get('DATABASE_SECRET', config('DATABASE_SECRET'))
+DATABASE_URL    = os.environ.get('DATABASE_URL', config('DATABASE_URL'))
+DATABASE        = os.environ.get('DATABASE', config('DATABASE'))
+DATABASE_USER   = os.environ.get('DATABASE_USER', config('DATABASE_USER'))
+DATABASE_SECRET = os.environ.get('DATABASE_SECRET', config('DATABASE_SECRET'))
 
 DATABASES = {
     'default': {
