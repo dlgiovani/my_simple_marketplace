@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,14 +88,19 @@ WSGI_APPLICATION = 'my_simple_marketplace.wsgi.application'
 #     }
 # }
 
+DATABASE_URL    = os.environ.get('DATABASE_URL')
+DATABASE        = os.environ.get('DATABASE')
+DATABASE_USER   = os.environ.get('DATABASE_USER')
+DATABASE_SECRET = os.environ.get('DATABASE_SECRET')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my_simple_marketplace_db',
-        'USER': 'postgres',
-        'PASSWORD': 'makina22',
-        'HOST': 'localhost',  # Or your PostgreSQL server's IP
-        'PORT': '5432',       # Default PostgreSQL port
+        'NAME': DATABASE,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_SECRET,
+        'HOST': DATABASE_URL,
+        'PORT': '5432',
     }
 }
 
