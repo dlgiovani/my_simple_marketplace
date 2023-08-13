@@ -9,7 +9,7 @@
             <a href="{% url 'conversation:detail' conversation.id %}">
                 <div class="m-1 p-6 flex bg-gray-100 hover:bg-gray-300 rounded-xl">
                     <div class="pr-6">
-                        <img src="{{ conversation.item.image.url }}" class="w-20 rounded-xl" />
+                        <img src="{{ conversation.item.image_url }}" onerror="this.src='https://http.cat/404';" class="w-20 rounded-xl" />
                     </div>
                     <div>
                         <p>

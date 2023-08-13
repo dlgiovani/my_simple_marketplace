@@ -11,7 +11,7 @@
         <div>
           <a href="{% url 'item:detail' item.id %}">
             <div>
-              <img src="{{ item.image_url }}" class="rounded-t-xl" />
+              <img src="{{ item.image_url }}" onerror="this.src='https://http.cat/404';" class="rounded-t-xl" />
             </div>
 
             <div class="p-6 bg-white rounded-b-xl">
