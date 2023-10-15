@@ -4,7 +4,9 @@ from .forms import SignupForm
 
 
 def index(request):
-    items = Item.objects.filter(is_sold=False).order_by('?')[:6]
+    items_ = Item.objects.filter(is_sold=False).order_by('?')[:9]
+
+    items = [items_[i:i+3] for i in range(0, len(items_), 3)]
     categories = Category.objects.all()
     return render(request, 'core/index.html', {
         'categories': categories,
