@@ -20,7 +20,7 @@ class NewItemForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ('category', 'name', 'description', 'price', 'image_url',)
-        price = PriceField(label=_('Price'), help_text=_('Enter the price using either . or , as cents separator.'))
+        price = PriceField(label=_('Price'), help_text=_('Separe decimais com ponto. Exemplo: 99.99'))
 
         widgets = {
             'category': forms.Select(attrs={
@@ -34,10 +34,9 @@ class NewItemForm(forms.ModelForm):
             }),
             'price': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
+                'localization': True
             }),
-            'image_url': forms.TextInput(attrs={
-                'class': INPUT_CLASSES,
-            }),
+            'image_url': forms.FileInput(),
         }
 
 
@@ -59,8 +58,7 @@ class EditItemForm(forms.ModelForm):
             }),
             'price': forms.TextInput(attrs={
                 'class': INPUT_CLASSES,
+                'localization': True
             }),
-            'image_url': forms.TextInput(attrs={
-                'class': INPUT_CLASSES,
-            }),
+            'image_url': forms.FileInput(),
         }

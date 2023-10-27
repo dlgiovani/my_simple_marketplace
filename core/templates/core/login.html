@@ -3,17 +3,17 @@
 Login
 {% endblock title %}
 {% block content %}
-    <div class="w-full md:w-1/2 p-6 my-6 md:mx-auto bg-gray-100 rounded-xl">
+    <div class="w-full md:w-1/2 p-6 my-6 md:mx-auto bg-gray-300 rounded-xl">
         <h1 class="mb-6 text-3xl">Login</h1>
         <form method="post" action=".">
             {% csrf_token %}
             <div class="mb-3">
-                <label class="inline-block mb-2">Username</label>
+                <label class="inline-block mb-2">Usuário</label>
                 <br />
                 {{ form.username }}
             </div>
             <div class="mb-3">
-                <label class="inline-block mb-2">Password</label>
+                <label class="inline-block mb-2">Senha</label>
                 <br />
                 {{ form.password }}
             </div>
@@ -23,7 +23,8 @@ Login
                     {{ form.non_field_errors }}
                 </div>
             {% endif %}
-            <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+            <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white w-full">Entrar</button>
         </form>
+        <p class="m-2">Não tem cadastro? <a href="{% url "core:signup" %}" class="text-teal-700 underline">Registrar</a></p>
     </div>
 {% endblock content %}

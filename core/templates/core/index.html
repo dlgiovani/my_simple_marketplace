@@ -1,10 +1,11 @@
 {% extends "core/master.html" %}
+{% load static %}
 {% block title %}
-  Welcome
+  Bem vindo
 {% endblock title %}
 {% block content %}
   <div class="mt-6 px-3 md:px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-6 text-2xl text-center">Recommended items</h2>
+    <h2 class="mb-6 text-2xl text-center">Produtos recomendados</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     {% for i in items %}
     <div class="flex flex-col m-4 col-span-1">
@@ -13,12 +14,13 @@
             <a href="{% url 'item:detail' item.id %}">
               <div>
                 <img src="{{ item.image_url }}"
-                     onerror="this.src='https://http.cat/404';"
+                     {% comment %} onerror="this.src='https://http.cat/404';" {% endcomment %}
+                     onerror="this.src='{% static "lupa.png" %}';"
                      class="w-full h-auto rounded-t-xl" />
               </div>
               <div class="p-4">
                 <h2 class="text-xl">{{ item.name }}</h2>
-                <p class="text-gray-500">Price: {{ item.price }}</p>
+                <p class="text-gray-500">R$: {{ item.price }}</p>
               </div>
             </a>
           </div>
@@ -28,14 +30,14 @@
     </div>
   </div>
   <div class="mt-6 px-3 md:px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-6 text-2xl text-center">Categories</h2>
+    <h2 class="mb-6 text-2xl text-center">Categorias:</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       {% for category in categories %}
         <div class="bg-white rounded-xl">
           <a href="{% url 'item:items' %}?category_id={{ category.id }}">
             <div class="p-4">
               <h2 class="text-xl">{{ category.name }}</h2>
-              <p class="text-gray-500">{{ category.items.count }} items</p>
+              <p class="text-gray-500">{{ category.items.count }} produtos</p>
             </div>
           </a>
         </div>

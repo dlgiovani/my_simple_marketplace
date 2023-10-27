@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from item.models import Category, Item
 from .forms import SignupForm
+from core.models import contactParm
 
 
 def index(request):
@@ -15,7 +16,14 @@ def index(request):
 
 
 def contact(request):
-    return render(request, 'core/contact.html')
+    whatsapp = contactParm.objects.first()
+    whatsapp_number = whatsapp.product_contact_whatsapp_phone
+    whatsapp_link = f'https://api.whatsapp.com/send?phone={whatsapp.product_contact_whatsapp_phone}&text=Olá, vim pelo site do Rei do Saco Preto :)'
+
+    return render(request, 'core/contact.html', {
+        'whatsapp_link': whatsapp_link,
+        'whatsapp_number': whatsapp_number
+    })
 
 def signup(request):
 

@@ -1,14 +1,14 @@
 {% extends "core/master.html" %}
 {% block title %}
-    Sign Up
+    Registrar
 {% endblock title %}
 {% block content %}
-    <div class="w-full md:w-1/2 w-1/2 p-6 my-6 md:mx-auto bg-gray-100 rounded-xl">
-        <h1 class="mb-6 text-3xl">Sign Up</h1>
+    <div class="w-full md:w-1/2 w-1/2 p-6 my-6 md:mx-auto bg-gray-300 rounded-xl">
+        <h1 class="mb-6 text-3xl">Registrar</h1>
         <form method="post" action=".">
             {% csrf_token %}
             <div class="mb-3">
-                <label class="inline-block mb-2">Username</label>
+                <label class="inline-block mb-2">Usuário</label>
                 <br />
                 {{ form.username }}
             </div>
@@ -18,12 +18,12 @@
                 {{ form.email }}
             </div>
             <div class="mb-3">
-                <label class="inline-block mb-2">Password</label>
+                <label class="inline-block mb-2">Senha</label>
                 <br />
                 {{ form.password1 }}
             </div>
             <div class="mb-3">
-                <label class="inline-block mb-2">Repeat password</label>
+                <label class="inline-block mb-2">Confirme a senha</label>
                 <br />
                 {{ form.password2 }}
             </div>
@@ -33,7 +33,8 @@
                     {{ form.non_field_errors }}
                 </div>
             {% endif %}
-            <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+            <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white w-full">Enviar</button>
         </form>
+        <p class="m-2">Já tem cadastro? <a href="{% url "core:login" %}" class="text-teal-700 underline">Entrar</a></p>
     </div>
 {% endblock content %}

@@ -1,10 +1,46 @@
 {% extends "core/master.html" %}
-
-{% block title %}Contact{% endblock title %}
-
+{% load static %}
+{% block title %}
+  Contato
+{% endblock title %}
 {% block content %}
-  <h1>Did you love this app? Wanna hire me? Got any questions? Here is how you can contact me:</h1>
-  <p class="font-semibold">Gmail: <a href="mailto:gdrosdalima@gmail.com" target="_blank" rel="noopener noreferrer">gdrosdalima@gmail.com</a></p>
-  <p class="font-semibold"></p>
-  <p class="font-semibold"></p>
+  <div class="mt-6 px-3 md:px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-6 text-2xl text-center">Contato</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <a href="https://www.facebook.com/profile.php?id=100063580204967"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="rounded-xl w-full flex justify-start bg-gray-200">
+          <div class="h-16 w-16 md:h-32 md:w-32">
+            <img src="{% static "facebook.png" %}" class="h-full" />
+          </div>
+          <div class="flex items-center justify-center grow">
+            <h1 class="text-xl md:text-3xl text-center">Rei do Saco Preto</h1>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/rei_do_saco_preto/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="rounded-xl w-full flex justify-start bg-gray-200">
+          <div class="h-16 w-16 md:h-32 md:w-32">
+            <img src="{% static "instagram.png" %}" class="h-full" />
+          </div>
+          <div class="flex items-center justify-center grow">
+            <h1 class="text-xl md:text-3xl text-center">@rei_do_saco_preto</h1>
+          </div>
+        </div>
+      </a>
+      <a href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+        <div class="rounded-xl w-full flex justify-start bg-gray-200">
+          <div class="h-16 w-16 md:h-32 md:w-32">
+            <img src="{% static "whatsapp.png" %}" class="h-full" />
+          </div>
+          <div class="flex items-center justify-center grow">
+            <h1 class="text-xl md:text-3xl text-center">{{ whatsapp_number }}</h1>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
 {% endblock content %}

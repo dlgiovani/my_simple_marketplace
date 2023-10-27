@@ -1,8 +1,9 @@
 {% extends "core/master.html" %}
 {% block title %}
-    Browse
+    Busca
 {% endblock title %}
 {% block content %}
+<h2 class="mb-6 text-2xl text-center">Busca</h2>
     <div class="p-3 md:grid md:grid-cols-4 md:gap-4">
         <div class="col-span-1 md:rounded-xl bg-white p-3 md:sticky md:top-0">
             <form method="get" action="{% url 'item:items' %}">
@@ -10,13 +11,13 @@
                        class="w-full py-4 px-6 border rounded-xl mb-2"
                        type="text"
                        value="{{ item_query }}"
-                       placeholder="Find the things you wanna buy ;D" />
-                <button class="w-full py-1 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+                       placeholder="O que procura?" />
+                <button class="w-full py-1 px-8 text-lg bg-teal-500 text-white rounded-xl">Pesquisar</button>
             </form>
             <ul class="w-full">
                 <li>
                     <a href="{% url 'item:items' %}"
-                       class="w-full mt-2 py-1 px-8 inline-block text-lg bg-yellow-500 text-white text-center rounded-xl">Clear filters</a>
+                       class="w-full mt-2 py-1 px-8 inline-block text-lg bg-yellow-500 text-white text-center rounded-xl">Limpar filtros</a>
                 </li>
             </ul>
             <hr class="my-6" />
@@ -42,7 +43,7 @@
                             </div>
                             <div class="p-4 bg-white rounded-b-xl">
                                 <h2 class="text-xl">{{ item.name }}</h2>
-                                <p class="text-gray-500">Price: {{ item.price }}</p>
+                                <p class="text-green-500">R$: {{ item.price }}</p>
                             </div>
                         </a>
                     </div>

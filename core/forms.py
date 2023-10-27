@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 class Loginform(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Hey, who are you? Tell me your username.',
+        'placeholder': 'Nome de usuário',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': '- It didn\'t work? \n- Impossible! That is password! That is... Oh, no! Caps Lock.',
+        'placeholder': 'Senha',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
 
@@ -18,19 +18,19 @@ class SignupForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Choose your username ^-^',
+        'placeholder': 'Nome de usuário',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
 
     email = forms.CharField(widget=forms.EmailInput(attrs={
-        'placeholder': 'example@email.com',
+        'placeholder': 'exemplo@email.com',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'Create a <strong> password for yourself',
+        'placeholder': 'Ao menos 1 letra maiúscula, número e símbolo. Exemplo: Rei@2023',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'Can you remember the password you typed above? Let\'s check.',
+        'placeholder': 'Confirme a senha',
         'class': 'w-full py-4 px-6 rounded-xl',
     }))
