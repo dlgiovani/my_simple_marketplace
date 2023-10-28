@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os, dj_database_url
 from pathlib import Path
 from decouple import config
+from .cloudinaryUrlDecomposer import decompose
 import cloudinary, cloudinary.uploader, cloudinary.api
 
 
@@ -27,9 +28,9 @@ SECRET_KEY      = os.environ.get('SECRET_KEY', config('SECRET_KEY'))
 DATABASE_URL    = os.environ.get('DATABASE_URL', config('DATABASE_URL'))
 ALLOWED_HOSTS   = [os.environ.get('ALLOWED_HOST', config('ALLOWED_HOST'))]
 
-CLOUD_NAME      = os.environ.get('CLOUD_NAME', config('CLOUD_NAME'))
-CLOUD_KEY       = os.environ.get('CLOUD_KEY', config('CLOUD_KEY'))
-CLOUD_SECRET    = os.environ.get('CLOUD_SECRET', config('CLOUD_SECRET'))
+# CLOUD_NAME      = os.environ.get('CLOUD_NAME', config('CLOUD_NAME'))
+# CLOUD_KEY       = os.environ.get('CLOUD_KEY', config('CLOUD_KEY'))
+# CLOUD_SECRET    = os.environ.get('CLOUD_SECRET', config('CLOUD_SECRET'))
 CLOUDINARY_URL   = os.environ.get('CLOUDINARY_URL', config('CLOUDINARY_URL'))
 
 DISABLE_COLLECTSTATIC = 1
@@ -37,10 +38,11 @@ DISABLE_COLLECTSTATIC = 1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+cloudinary_keys = decompose(CLOUDINARY_URL)
 cloudinary.config( 
-  cloud_name = CLOUD_NAME, 
-  api_key = CLOUD_KEY, 
-  api_secret = CLOUD_SECRET,
+  cloud_name = cloudinary_keys['name'], 
+  api_key = cloudinary_keys['key'], 
+  api_secret = cloudinary_keys['secret'],
   secure=True,
 )
 
