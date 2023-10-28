@@ -5,27 +5,27 @@
 {% endblock title %}
 {% block content %}
   <div class="grid grid-cols-5 gap-6">
-    <div class="col-span-5 md:col-span-3 items-center">
+    <div class="col-span-5 md:col-span-3 flex items-center justify-center">
       <img src="{{ item.image_url }}"
            {% comment %}
            onerror="this.src='https://http.cat/404';"
            {% endcomment %}
            onerror="this.src='{% static "lupa.png" %}';"
            alt="{{ item.name }}"
-           class="rounded-xl" />
+           class="rounded-xl max-h-[75vh]" />
     </div>
     <div class="col-span-5 md:col-span-2 p-6 bg-gray-100 rounded-xl">
-      <h1 class="mb-6 text-3xl">{{ item.name }}</h1>
-      {% if item.description %}
-        <p class="text-gray-700">
-          <strong class="text-gray-500">Descrição:</strong>
-          <br />
-          {{ item.description }}
-        </p>
-        <br />
+      <h1 class="mb-2 text-4xl font-semibold">{{ item.name }}</h1>
+      <p class="mb-4 text-gray-600 font-semibold">Em {{ item.category.name }}</p>
+      {% if item.briefing %}
+        <div class="my-2 p-2 bg-gray-200/50 rounded-xl">
+          {% for line in item.briefing.splitlines %}
+            <p class="my-1 text-gray-800 font-semibold">&middot; {{ line }}</p>
+          {% endfor %}
+        </div>
       {% endif %}
       <div class="flex">
-        <p class="text-green-500 text-5xl font-bold">R$ {{ item.price }}</p>
+        <p class="text-green-500 text-5xl font-bold">R$ {{ item.price.amount }}</p>
         <a href="{{ whatsapp_call_link }}"
            target="_blank"
            rel="noopener noreferrer">
@@ -48,23 +48,38 @@
     </div>
   </div>
   <div class="mt-6 px-6 py-12 bg-gray-200 rounded-xl">
+    {% if item.description %}
+      <p class="text-gray-700">
+        <strong class="text-gray-500">Descrição:</strong>
+        <br />
+      </p>
+      {% for line in item.description.splitlines %}
+        <p>
+          {{ line }}
+          <br />
+        </p>
+      {% endfor %}
+      <br />
+    {% endif %}
+  </div>
+  <div class="mt-6 px-6 py-12 bg-gray-200 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Itens relacionados</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       {% for item in related_items %}
         <div class="bg-gray-100 rounded-xl">
           <a href="{% url 'item:detail' item.id %}">
-            <div>
+            <div class="flex items-center justify-center">
               <img src="{{ item.image_url }}"
                    {% comment %}
                    onerror="this.src='https://http.cat/404';"
                    {% endcomment %}
                    onerror="this.src='{% static "lupa.png" %}';"
                    alt="{{ item.name }}"
-                   class="rounded-t-xl" />
+                   class="max-h-[40vh]" />
             </div>
             <div class="p-6 bg-white rounded-b-xl">
               <h2 class="text-2xl">{{ item.name }}</h2>
-              <p class="text-green-500">R$: {{ item.price }}</p>
+              <p class="text-green-500">R$: {{ item.price.amount }}</p>
             </div>
           </a>
         </div>

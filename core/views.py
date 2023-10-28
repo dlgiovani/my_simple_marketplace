@@ -18,7 +18,7 @@ def index(request):
 def contact(request):
     whatsapp = contactParm.objects.first()
     whatsapp_number = whatsapp.product_contact_whatsapp_phone
-    whatsapp_link = f'https://api.whatsapp.com/send?phone={whatsapp.product_contact_whatsapp_phone}&text=Olá, vim pelo site do Rei do Saco Preto :)'
+    whatsapp_link = f'https://api.whatsapp.com/send?phone={whatsapp.product_contact_whatsapp_phone}&text=Olá, vim pelo Marketplace :)'
 
     return render(request, 'core/contact.html', {
         'whatsapp_link': whatsapp_link,

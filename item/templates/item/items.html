@@ -1,10 +1,11 @@
 {% extends "core/master.html" %}
+{% load static %}
 {% block title %}
     Busca
 {% endblock title %}
 {% block content %}
 <h2 class="mb-6 text-2xl text-center">Busca</h2>
-    <div class="p-3 md:grid md:grid-cols-4 md:gap-4">
+    <div class="p-3 md:grid md:grid-cols-4 md:gap-4 bg-gray-200 m-2 rounded-xl">
         <div class="col-span-1 md:rounded-xl bg-white p-3 md:sticky md:top-0">
             <form method="get" action="{% url 'item:items' %}">
                 <input name="item_query"
@@ -36,14 +37,14 @@
         <div class="col-span-3">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {% for item in items %}
-                    <div>
+                    <div class="rounded-xl bg-gray-100">
                         <a href="{% url 'item:detail' item.id %}">
-                            <div>
-                                <img src="{{ item.image_url }}" onerror="this.src='https://http.cat/404';" class="w-full h-auto rounded-t-xl" />
+                            <div class="flex justify-center align-center">
+                                <img src="{{ item.image_url }}" onerror="{% static "lupa.png" %};" class="max-h-[45vh]" />
                             </div>
                             <div class="p-4 bg-white rounded-b-xl">
                                 <h2 class="text-xl">{{ item.name }}</h2>
-                                <p class="text-green-500">R$: {{ item.price }}</p>
+                                <p class="text-green-500">R$: {{ item.price.amount }}</p>
                             </div>
                         </a>
                     </div>

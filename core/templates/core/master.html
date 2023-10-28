@@ -5,22 +5,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Site oficial do Rei do Saco Preto" />
+    <meta name="description" content="A catalogue marketplace demo by Giovani Drosda Lima." />
     <meta name="keywords"
-          content="Rei do Saco Preto, produtos de limpeza, saco preto" />
+          content="Marketplace, Django, Dev, Catalogue, Shopping, Online" />
     <title>
       {% block title %}
       {% endblock title %}
-    | Rei do Saco Preto</title>
+    | Marketplace</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div class="fixed w-full z-50">
       <nav class="py-2 px-4 md:px-6 flex justify-between items-center bg-gray-50">
         <div class="flex">
-          <a href="{% url 'core:index' %}" class="flex items-center">
-            <img src="{% static "logo.png" %}" class="w-12" />
-            <h1 class="text-sm md:text-3xl font-semibold">Rei do Saco Preto</h1>
+          <a href="{% url 'core:index' %}" class="flex items-center gap-4">
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/shop--v2.png" alt="M"/>
+            <h1 class="text-sm md:text-3xl font-semibold">Marketplace</h1>
             {% if request.user.is_authenticated %}
               <p class="text-sm md:text-3xl font-thin">&nbsp;| {{ request.user.username }}</p>
             {% endif %}
@@ -77,7 +77,7 @@
       <div class="w-full md:w-2/3 pr-0 md:pr-10 mb-4 md:mb-0">
         <h3 class="mb-2 md:mb-5 font-semibold text-gray-400">Sobre nós</h3>
         <p class="text-base md:text-lg text-gray-500">
-          Trabalhamos com venda de sacos de lixo reforçados com valores abaixo da média de mercado. Entrega gratuita para regiões do Xaxim, Hauer, Boqueirão e Uberaba (outras regiões consultar taxa). Aceitamos todos os cartões de débito e crédito.
+          O <strong>Marketplace</strong> é uma plataforma de demonstração, não deve ser utilizada para vendas. A plataforma, entretanto, pode ser facilmente convertida em um marketplace real para sua empresa. Para mais informações, acesse a página de <a href="{% url "core:contact" %}" class="text-teal-700 underline font-semibold">Contato</a>.
         </p>
       </div>
       <div class="w-full md:w-1/3">
