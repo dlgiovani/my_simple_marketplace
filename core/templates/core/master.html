@@ -18,8 +18,8 @@
     <div class="fixed w-full z-50">
       <nav class="py-2 px-4 md:px-6 flex justify-between items-center bg-gray-50">
         <div class="flex">
-          <a href="{% url 'core:index' %}" class="flex items-center gap-4">
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/shop--v2.png" alt="M"/>
+          <a href="{% url 'core:index' %}" class="flex items-center">
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/shop--v2.png" alt="M" class="mx-2"/>
             <h1 class="text-sm md:text-3xl font-semibold">Marketplace</h1>
             {% if request.user.is_authenticated %}
               <p class="text-sm md:text-3xl font-thin">&nbsp;| {{ request.user.username }}</p>
@@ -30,11 +30,11 @@
           <form method="get" action="{% url 'item:items' %}">
             <div class="flex">
               <input name="item_query"
-                     class="py-4 px-6 border border-black h-16 hidden md:block rounded-l-xl"
+                     class="py-4 px-6 border border-black md:h-12 hidden md:block rounded-l-xl"
                      type="text"
                      value="{{ item_query }}"
                      placeholder="O que procura?" />
-              <button class="w-[2.4em] md:w-16 md:h-16 md:border border-black rounded-r-xl">
+              <button class="w-[2.4em] md:w-16 md:h-12 md:border border-black rounded-r-xl">
                 <img src="https://img.icons8.com/ios/50/000000/search--v3.png" alt="Q" />
               </button>
             </div>

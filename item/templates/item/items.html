@@ -6,7 +6,7 @@
 {% block content %}
 <h2 class="mb-6 text-2xl text-center">Busca</h2>
     <div class="p-3 md:grid md:grid-cols-4 md:gap-4 bg-gray-200 m-2 rounded-xl">
-        <div class="col-span-1 md:rounded-xl bg-white p-3 md:sticky md:top-0">
+        <div class="col-span-1 rounded-xl bg-white p-3 md:sticky md:top-0 mb-4 md:mb-1">
             <form method="get" action="{% url 'item:items' %}">
                 <input name="item_query"
                        class="w-full py-4 px-6 border rounded-xl mb-2"
@@ -40,7 +40,7 @@
                     <div class="rounded-xl bg-gray-100">
                         <a href="{% url 'item:detail' item.id %}">
                             <div class="flex justify-center align-center">
-                                <img src="{{ item.image_url }}" onerror="{% static "lupa.png" %};" class="max-h-[45vh]" />
+                                <img src="{{ item.image_url }}" onerror="{% static "lupa.png" %};" class="max-h-[30vh]" />
                             </div>
                             <div class="p-4 bg-white rounded-b-xl">
                                 <h2 class="text-xl">{{ item.name }}</h2>
